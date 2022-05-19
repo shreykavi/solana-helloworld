@@ -146,6 +146,7 @@ export async function checkProgram(): Promise<void> {
   }
 
   // Check if the program has been deployed
+  console.log(programId.toBase58())
   const programInfo = await connection.getAccountInfo(programId);
   if (programInfo === null) {
     if (fs.existsSync(PROGRAM_SO_PATH)) {

@@ -4,6 +4,8 @@
   </a>
 </p>
 
+https://dev.to/kelvinkirima014/a-gentle-introduction-to-solana-2h3k
+
 [![Build status][travis-image]][travis-url] [![Gitpod
 Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/solana-labs/example-helloworld)
 

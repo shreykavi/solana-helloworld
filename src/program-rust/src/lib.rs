@@ -1,10 +1,13 @@
+// borsh is used to de/serialize to bytecode
 use borsh::{BorshDeserialize, BorshSerialize};
+
+// Solana source code that must be leveraged to write on chain programs
 use solana_program::{
-    account_info::{next_account_info, AccountInfo},
+    account_info::{next_account_info, AccountInfo}, //Get solana acc info
     entrypoint,
-    entrypoint::ProgramResult,
-    msg,
-    program_error::ProgramError,
+    entrypoint::ProgramResult, // result for Solana runtime
+    msg, // Solana Runtime logging
+    program_error::ProgramError, // allows errors returned by Solana runtime
     pubkey::Pubkey,
 };
 
@@ -16,6 +19,7 @@ pub struct GreetingAccount {
 }
 
 // Declare and export the program's entrypoint
+// All solana programs must have an entry point
 entrypoint!(process_instruction);
 
 // Program entrypoint's implementation
@@ -39,6 +43,7 @@ pub fn process_instruction(
     }
 
     // Increment and store the number of times the account has been greeted
+    // try_from_slice deserializes instance from slice of bytes
     let mut greeting_account = GreetingAccount::try_from_slice(&account.data.borrow())?;
     greeting_account.counter += 1;
     greeting_account.serialize(&mut &mut account.data.borrow_mut()[..])?;
